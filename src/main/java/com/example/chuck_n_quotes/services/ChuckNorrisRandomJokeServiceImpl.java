@@ -8,9 +8,15 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ChuckNorrisRandomJokeServiceImpl implements RandomJokeService {
+//with DI
+    private final ChuckNorrisQuotes norrisQuotes;
+
+    public ChuckNorrisRandomJokeServiceImpl() {
+        norrisQuotes = new ChuckNorrisQuotes();
+    }
 
     @Override
     public String getRandomJoke() {
-        return new ChuckNorrisQuotes().getRandomQuote();
+        return norrisQuotes.getRandomQuote();
     }
 }
